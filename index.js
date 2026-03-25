@@ -2,6 +2,7 @@ const express = require("express")
 const morgan = require('morgan')
 const app = express()
 
+app.use(express.static('dist'))
 app.use(express.json())
 
 app.use(morgan(function (tokens, req, res) {
@@ -37,10 +38,6 @@ let persons = [
       "number": "39-23-6423122"
     }
 ]
-
-app.get("/", (request, response) => {
-    response.send("<h1>Hello, world</h1>")
-})
 
 app.get("/info", (request, response) => {
     response.send(`Phonebook has info for ${persons.length} people <br /> ${new Date().toString()}`)
