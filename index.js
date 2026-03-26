@@ -20,7 +20,7 @@ app.use(morgan(function (tokens, req, res) {
 }))
 
 app.get("/info", (request, response) => {
-    response.send(`Phonebook has info for ${persons.length} people <br /> ${new Date().toString()}`)
+    response.send(`Phonebook has info for ${Person.find({}).length} people <br /> ${new Date().toString()}`)
 })
 
 app.post("/api/persons", (request, response) => {
@@ -49,8 +49,8 @@ app.post("/api/persons", (request, response) => {
 })
 
 app.get('/api/persons', (request, response) => {
-  Person.find({}).then(notes => {
-    response.json(notes)
+  Person.find({}).then(persons => {
+    response.json(persons)
   })
 })
 
