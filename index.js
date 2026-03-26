@@ -32,7 +32,7 @@ app.post("/api/persons", (request, response) => {
         })
     }
 
-    if (persons.find(person => person.name === body.name)) {
+    if (Person.find({ name: request.name})) {
         return response.status(400).json({
             error: "name must be unique"
         })
